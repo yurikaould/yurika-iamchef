@@ -1,12 +1,15 @@
+import SelectingredientBadge from "./SelectedIngredientBadge"
+
 type SelectedIngredientBadgeListProps = {
-    selectedIngredients: string[]
+    selectedIngredients: string[],
+    handleDeleteIng: () => void
 }
 
-const SelectedIngredientBadgeList = ({ selectedIngredients }: SelectedIngredientBadgeListProps) => {
+const SelectedIngredientBadgeList = ({ selectedIngredients, handleDeleteIng }: SelectedIngredientBadgeListProps) => {
   return (
-    <div>
-        {selectedIngredients.map((ingredient) => 
-            <p className="text-white">{ingredient}</p>
+    <div className="flex flex-wrap gap-2">
+        {selectedIngredients.map((ingredient, index) => 
+            <SelectingredientBadge key={`${ingredient}-${index}`} index={index} handleDeleteIng={handleDeleteIng} ingredient={ingredient} />
         )}
     </div>
   )
