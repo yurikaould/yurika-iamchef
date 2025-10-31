@@ -1,5 +1,5 @@
 import './App.css'
-import SearchBar_Btn from './components/search-recipes/SearchBar_Btn'
+import SearchBar from './components/search-bar/Searchbar'
 import Titlesubtitle from './components/title-subtitle/TitleSubtitle'
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <>
       <main className="p-6 w-screen h-screen bg-green-700">
         <Titlesubtitle/>
-        <SearchBar_Btn />
+        <SearchBar />
       </main>
     </>
   )
