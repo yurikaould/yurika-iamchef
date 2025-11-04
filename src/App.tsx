@@ -3,6 +3,7 @@ import './App.css'
 import SearchBar from './components/search-bar/Searchbar'
 import Titlesubtitle from './components/title-subtitle/TitleSubtitle'
 import SelectedList from './components/selected-item/SelectedList'
+import DiscoverRecipeBtn from './components/discover-recipes/DiscoverRecipeBtn'
 
 function App() {
 
@@ -27,12 +28,12 @@ function App() {
           <Titlesubtitle/>
         </div>
 
-        <div className="mb-4">
+        <div className="flex flex-col gap-4">
           <SearchBar handleSuggestClick={handleSuggestClick} />
-        </div>
 
-        <div className="">
           <SelectedList ingredients={selectedIng} handleRemove={handleRemove}/>
+
+          <DiscoverRecipeBtn ingredients={selectedIng} />
         </div>
 
       </main>
