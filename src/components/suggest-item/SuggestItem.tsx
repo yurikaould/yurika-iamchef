@@ -1,10 +1,13 @@
 type SuggestItemProps ={
-    ingredient: string
+    ingredient: string,
+    handleClick: (ing: string) => void
 }
 
-const SuggestItem = ({ ingredient }: SuggestItemProps) => {
+const SuggestItem = ({ ingredient, handleClick }: SuggestItemProps) => {
   return (
-    <div className="bg-white rounded-lg p-2">
+    <div
+      onClick={() => handleClick(ingredient)} 
+      className="bg-white rounded-lg p-2 cursor-pointer">
         <h1>{ingredient}</h1>
     </div>
   )

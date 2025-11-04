@@ -1,14 +1,16 @@
 import SuggestItem from "./SuggestItem"
 
 type SuggestListProps = {
-    ingredients: string[]
+    ingredients: string[],
+    handleClick: (ing: string) => void
 }
 
-const SuggestList = ({ ingredients }: SuggestListProps) => {
+// componente che renderizza la lista di elementi suggeriti, facendo prop drilling per l'evento di click
+const SuggestList = ({ ingredients, handleClick }: SuggestListProps) => {
   return (
     <div className="max-h-40 overflow-y-auto rounded-lg bg-white">
     {ingredients.map((ingredient) => (
-        <SuggestItem key={ingredient} ingredient={ingredient} />
+        <SuggestItem key={ingredient} ingredient={ingredient} handleClick={handleClick} />
     ))}
     </div>
 
