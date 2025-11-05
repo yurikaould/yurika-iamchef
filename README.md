@@ -1,73 +1,30 @@
-# React + TypeScript + Vite
+## TODO:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Creare **Header.tsx** con:
+  - organizzazione header (logo, subtitle, searchbar, badge, bottone)
+  - gestione stati localizzati (solo stati che riguardano header)
+  - gestione logica header (se sono in home occupa una parte consistente, sennò è in alto)
 
-Currently, two official plugins are available:
+- Creare **Layout.tsx** con:
+  - organizzazione layout (header, main, footer, ecc...)
+  - logica di state globali
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Creare **DiscoverRecipes.tsx** con:
+  - Elenco di **RecipeCard**
+  - bottoni per swipare avanti e indietro con relative logiche
 
-## React Compiler
+- Creare **RecipeCard.tsx** con:
+  - Card per il dettaglio delle ricette, inizialmente statico
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+- Creare **RecipeDetails.tsx** con:
+   - Dettagli ricetta basandosi su ID della card selezionata
 
-## Expanding the ESLint configuration
+## REFACTOR
+* Mantenere codice pulito, organizzato e manutenibile
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+PROATTIVO: NON ASPETTO LA TRACCIA PER IL COMPITINO, MA MI PROPONGO E PROPONGO IDEE
+CAPARBIO: UN PROBLEMA/PROGETTO SU CUI LAVORO NON DEVE FUNZIONARE, MA FUNZIONARE COME DICO IO
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+STO IMPARANDO A LAVORARE/GESTIRE/CONCENTRARMI SU UN PROBLEMA/PROGETTO PER VOLTA
+STO IMPARANDO CHE ALLE VOLTE LA PERFEZIONE NON SERVE ED E' IMPORTANTE PRESERVARMI
