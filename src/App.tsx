@@ -14,6 +14,12 @@ function App() {
 
   // funzione per gestire la selezione da un elemento suggerito
   const handleSuggestClick = (ing: string) => {
+
+    // verifico se l'ingrediente è già stato cliccato
+    if (selectedIng.includes(ing)) { 
+      return null 
+    }
+
     setSelectedIng(prev => [...prev, ing])
   }
 
