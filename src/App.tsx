@@ -7,6 +7,9 @@ import DiscoverRecipeBtn from './components/discover-recipes/DiscoverRecipeBtn'
 
 function App() {
 
+  // variabile di stato fondamentale per capire a che punto dell'applicazione sono
+  const [isHomePage, setIsHomePage] = useState<boolean>(true)
+
   const [selectedIng, setSelectedIng] = useState<string[]>([])
 
   // funzione per gestire la selezione da un elemento suggerito
@@ -23,18 +26,23 @@ function App() {
 
   return (
     <>
-      <main className="p-6 w-screen h-screen bg-green-700">
-        <div className="">
-          <Titlesubtitle/>
-        </div>
+      <main className="p-6 w-screen h-screen bg-green-700"> 
 
-        <div className="flex flex-col gap-4">
-          <SearchBar handleSuggestClick={handleSuggestClick} />
+        {isHomePage && (
+          <>
+            <div className="">
+              <Titlesubtitle/>
+            </div>
 
-          <SelectedList ingredients={selectedIng} handleRemove={handleRemove}/>
+            <div className="flex flex-col gap-4">
+              <SearchBar handleSuggestClick={handleSuggestClick} />
 
-          <DiscoverRecipeBtn ingredients={selectedIng} />
-        </div>
+              <SelectedList ingredients={selectedIng} handleRemove={handleRemove}/>
+
+              <DiscoverRecipeBtn ingredients={selectedIng} />
+            </div>
+          </>
+        )}
 
       </main>
     </>
