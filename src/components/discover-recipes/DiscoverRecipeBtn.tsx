@@ -1,10 +1,12 @@
 import { ArrowRight } from "lucide-react"
+import type { Pages } from "../../types/pages"
 
 type DiscoverRecipeBtnProps = {
-    ingredients: string[]
+    ingredients: string[],
+    setActualPage: (page: Pages) => void
 }
 
-const DiscoverRecipeBtn = ({ ingredients }: DiscoverRecipeBtnProps) => {
+const DiscoverRecipeBtn = ({ ingredients, setActualPage }: DiscoverRecipeBtnProps) => {
 
     if (!ingredients || ingredients.length == 0) {
         return null
@@ -12,7 +14,10 @@ const DiscoverRecipeBtn = ({ ingredients }: DiscoverRecipeBtnProps) => {
 
 
   return (
-    <button className="flex justify-center gap-2 flex-nowrap bg-white hover:bg-green-100 text-green-600 py-2 rounded-lg font-bold cursor-pointer transition-all duration-300">
+    <button 
+      className="flex justify-center gap-2 flex-nowrap bg-white hover:bg-green-100 text-green-600 py-2 rounded-lg font-bold cursor-pointer transition-all duration-300"
+      onClick={() => setActualPage({page: "discover-recipes"})}
+    >
         Discover Recipe <ArrowRight />
     </button>
   )

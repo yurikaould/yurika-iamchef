@@ -1,7 +1,11 @@
 import { useState } from 'react'
 import Header from '../header/Header'
+import type { Pages } from '../../types/pages'
 
 const Layout = () => {
+
+    // variabile di stato globale per gestire la pagina in cui sono
+    const [actualPage, setActualPage] = useState<Pages>({page: "homepage"})
 
     const [selectedIng, setSelectedIng] = useState<string[]>([])
 
@@ -24,9 +28,15 @@ const Layout = () => {
     }
 
     return (
-        <main>
-            <header className="p-6 w-screen h-screen bg-green-700">
-                <Header selectedIng={selectedIng} onSuggestClick={handleSuggestClick} onBadgeRemove={handleSuggestRemove} />
+        <main className='w-screen max-w-96 mx-auto'>
+            <header className="p-6 h-screen bg-green-700">
+                <Header 
+                  actualPage={actualPage} 
+                  setActualPage={setActualPage} 
+                  selectedIng={selectedIng} 
+                  onSuggestClick={handleSuggestClick} 
+                  onBadgeRemove={handleSuggestRemove} 
+                />
             </header>
 
             <section></section>
