@@ -1,6 +1,8 @@
+import type { IngredientInterface } from "../../types/ingredients"
+
 type SuggestItemProps ={
-    ingredient: string,
-    handleClick: (ing: string) => void
+    ingredient: IngredientInterface,
+    handleClick: (ing: IngredientInterface) => void
 }
 
 const SuggestItem = ({ ingredient, handleClick }: SuggestItemProps) => {
@@ -8,7 +10,7 @@ const SuggestItem = ({ ingredient, handleClick }: SuggestItemProps) => {
     <div
       onClick={() => handleClick(ingredient)} 
       className="bg-white rounded-lg p-2 cursor-pointer">
-        <h1>{ingredient}</h1>
+        <h1>{ingredient.name}</h1>
     </div>
   )
 }

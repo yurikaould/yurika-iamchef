@@ -18,5 +18,11 @@
 - Creare **RecipeDetails.tsx** con:
    - Dettagli ricetta basandosi su ID della card selezionata
 
+### Flusso attuale
+1. Viene mostrata DiscoverRipes
+  - Manda a schermo RecipeCard, a cui passa una recipe, che è presa dall'array recipes, in posizione currentIndex
+
+2. RecipeCard ha dentro 
+
 ## REFACTOR
 * Mantenere codice pulito, organizzato e manutenibile

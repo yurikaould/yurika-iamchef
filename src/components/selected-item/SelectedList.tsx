@@ -1,18 +1,22 @@
+import type { IngredientInterface } from "../../types/ingredients"
+import type { Pages } from "../../types/pages"
 import SelectedItem from "./SelectedItem"
 
 type SelectedListProps = {
-    ingredients: string[],
-    handleRemove: (ing: string) => void
+    ingredients: IngredientInterface[],
+    handleRemove: (ing: IngredientInterface) => void,
+    actualPage: Pages
 }
 
-const SelectedList = ({ ingredients, handleRemove }: SelectedListProps) => {
+const SelectedList = ({ ingredients, handleRemove, actualPage }: SelectedListProps) => {
   return (
-    <div className="max-h-40 flex flex-wrap gap-4 overflow-y-auto rounded-lg">
+    <div className={`max-h-40 flex ${actualPage.page == 'homepage' ? "flex-wrap gap-4" : "flex-nowrap gap-2"}  overflow-y-auto rounded-lg`}>
     {ingredients.map((ingredient, key) => (
         <SelectedItem 
             key={key.toString()} 
             ingredient={ingredient} 
-            handleRemove={handleRemove}/>
+            handleRemove={handleRemove}
+            actualPage={actualPage}/>
     ))}
     </div>
 

@@ -1,11 +1,11 @@
 import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
-import { ingredients } from "../../types/ingredients";
+import { ingredients, type IngredientInterface } from "../../types/ingredients";
 import SuggestList from "../suggest-item/SuggestList";
 
 // Definisco i tipi delle props che mi arrivano da fuori
 type SearchBarProps = {
-  handleSuggestClick: (ing: string) => void
+  handleSuggestClick: (ing: IngredientInterface) => void
 }
 
 // Il mio componente SearchBar: gestisce tutto ciò che riguarda la ricerca dell’ingrediente
@@ -22,14 +22,14 @@ const SearchBar = ({ handleSuggestClick }: SearchBarProps) => {
   const filteredIngredients = useMemo(() => {
     if (!searchingIng) return [];
     return ingredients.filter((ingredient) =>
-      ingredient.startsWith(searchingIng)
+      ingredient.name.startsWith(searchingIng)
     );
   }, [searchingIng]);
 
   // Quando l’utente clicca su un suggerimento:
   // 1. passo il valore cliccato al parent tramite callback
   // 2. svuoto la barra di ricerca per dare feedback visivo immediato
-  const handleClick = (ing: string) => {
+  const handleClick = (ing: IngredientInterface) => {
     handleSuggestClick(ing);
     setSearchingIng("");
   };

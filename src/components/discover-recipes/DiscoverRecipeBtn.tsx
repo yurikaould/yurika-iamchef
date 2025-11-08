@@ -1,8 +1,9 @@
 import { ArrowRight } from "lucide-react"
 import type { Pages } from "../../types/pages"
+import type { IngredientInterface } from "../../types/ingredients"
 
 type DiscoverRecipeBtnProps = {
-    ingredients: string[],
+    ingredients: IngredientInterface[],
     setActualPage: (page: Pages) => void
 }
 
