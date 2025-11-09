@@ -2,15 +2,15 @@ import type { RecipeInterface } from "../../../types/recipes";
 import { fallbackRecipe } from "../../../types/fallback-recipe";
 import type { Pages } from "../../../types/pages";
 import { getDifficulty } from "../../../utils/recipe-details-utils/getDifficulty";
-import { IconBadge } from "./IconBadge";
+import { IconBadge } from "./components/IconBadge.tsx";
 import { getCost } from "../../../utils/recipe-details-utils/getCost";
-import { RecipeCuisines } from "./RecipeCuisines.tsx";
+import { RecipeCuisines } from "./components/RecipeCuisines.tsx";
 import { getHealtScore } from "../../../utils/recipe-details-utils/getHealtScore";
 import { getSummary } from "../../../utils/recipe-details-utils/getSummary";
-import DisplayedIngredients from "./DisplayedIngredients";
-import WinePairingComponent from "./WinePairing";
-import RecipeImage from "./RecipeImage";
-import { RecipeIngredients } from "./RecipeIngredients.tsx";
+import DisplayedIngredients from "./components/DisplayedIngredients.tsx";
+import WinePairingComponent from "./components/WinePairing.tsx";
+import RecipeImage from "./components/RecipeImage.tsx";
+import { RecipeIngredients } from "./components/RecipeIngredients.tsx";
 
 type RecipeDetailsProps = {
   id?: number;

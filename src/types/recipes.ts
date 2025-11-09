@@ -66,7 +66,7 @@ export const recipes: RecipeInterface[] = [
     {
       id: 1,
       title: "Sushi Rolls",
-      image: "https://img.example.com/sushi.jpg",
+      image: "https://unsplash.com/it/foto/tavolo-bianco-AzHohzX6h_M",
       imageType: "jpg",
       servings: 2,
       readyInMinutes: 45,
@@ -86,7 +86,7 @@ export const recipes: RecipeInterface[] = [
     {
       id: 2,
       title: "Chicken Tikka Masala",
-      image: "https://img.example.com/chicken-tikka.jpg",
+      image: "https://unsplash.com/it/foto/tavolo-bianco-AzHohzX6h_M",
       imageType: "jpg",
       servings: 4,
       readyInMinutes: 60,
@@ -106,7 +106,7 @@ export const recipes: RecipeInterface[] = [
     {
       id: 3,
       title: "Pad Thai",
-      image: "https://img.example.com/pad-thai.jpg",
+      image: "https://unsplash.com/it/foto/tavolo-bianco-AzHohzX6h_M",
       imageType: "jpg",
       servings: 2,
       readyInMinutes: 35,
@@ -126,7 +126,7 @@ export const recipes: RecipeInterface[] = [
     {
       id: 4,
       title: "Beef Tacos",
-      image: "https://img.example.com/tacos.jpg",
+      image: "https://unsplash.com/it/foto/tavolo-bianco-AzHohzX6h_M",
       imageType: "jpg",
       servings: 4,
       readyInMinutes: 30,
@@ -146,7 +146,7 @@ export const recipes: RecipeInterface[] = [
     {
       id: 5,
       title: "Moroccan Couscous",
-      image: "https://img.example.com/couscous.jpg",
+      image: "https://unsplash.com/it/foto/tavolo-bianco-AzHohzX6h_M",
       imageType: "jpg",
       servings: 4,
       readyInMinutes: 30,
@@ -166,7 +166,7 @@ export const recipes: RecipeInterface[] = [
     {
       id: 6,
       title: "Falafel Wrap",
-      image: "https://img.example.com/falafel.jpg",
+      image: "https://unsplash.com/it/foto/tavolo-bianco-AzHohzX6h_M",
       imageType: "jpg",
       servings: 2,
       readyInMinutes: 25,
@@ -186,7 +186,7 @@ export const recipes: RecipeInterface[] = [
     {
       id: 7,
       title: "Spaghetti Carbonara",
-      image: "https://img.example.com/carbonara.jpg",
+      image: "https://unsplash.com/it/foto/tavolo-bianco-AzHohzX6h_M",
       imageType: "jpg",
       servings: 2,
       readyInMinutes: 20,
@@ -206,7 +206,7 @@ export const recipes: RecipeInterface[] = [
     {
       id: 8,
       title: "Greek Salad",
-      image: "https://img.example.com/greek-salad.jpg",
+      image: "https://unsplash.com/it/foto/tavolo-bianco-AzHohzX6h_M",
       imageType: "jpg",
       servings: 4,
       readyInMinutes: 10,
@@ -226,7 +226,7 @@ export const recipes: RecipeInterface[] = [
     {
       id: 9,
       title: "French Onion Soup",
-      image: "https://img.example.com/french-onion-soup.jpg",
+      image: "https://unsplash.com/it/foto/tavolo-bianco-AzHohzX6h_M",
       imageType: "jpg",
       servings: 4,
       readyInMinutes: 50,
@@ -246,7 +246,7 @@ export const recipes: RecipeInterface[] = [
     {
       id: 10,
       title: "American Cheeseburger",
-      image: "https://img.example.com/cheeseburger.jpg",
+      image: "https://unsplash.com/it/foto/tavolo-bianco-AzHohzX6h_M",
       imageType: "jpg",
       servings: 2,
       readyInMinutes: 20,

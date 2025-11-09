@@ -1,4 +1,4 @@
-import type { WinePairing } from "../../../types/recipes"
+import type { WinePairing } from "../../../../types/recipes"
 
 type WinePairingProps = {
     winePairing: WinePairing

@@ -11,9 +11,10 @@ type SelectedListProps = {
 const SelectedList = ({ ingredients, handleRemove, actualPage }: SelectedListProps) => {
   return (
     <div className={`max-h-40 flex ${actualPage.page == 'homepage' ? "flex-wrap gap-4" : "flex-nowrap gap-2"}  overflow-y-auto rounded-lg`}>
-    {ingredients.map((ingredient, key) => (
+    {ingredients.map((ingredient, index) => (
         <SelectedItem 
-            key={key.toString()} 
+            key={index.toString()}
+            id={index.toString()} 
             ingredient={ingredient} 
             handleRemove={handleRemove}
             actualPage={actualPage}/>

@@ -1,5 +1,5 @@
 import type { ReactElement } from "react";
-import { IconBadge } from "../../components/sections/recipe-details/IconBadge";
+import { IconBadge } from "../../components/sections/recipe-details/components/IconBadge";
 
 export const getHealtScore = (healthScore: number | undefined): ReactElement | false | 0 | undefined => {
     return healthScore &&

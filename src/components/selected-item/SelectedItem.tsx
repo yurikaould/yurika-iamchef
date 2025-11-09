@@ -3,17 +3,17 @@ import type { Pages } from "../../types/pages";
 import type { IngredientInterface } from "../../types/ingredients";
 
 type SelectedIngredientProps = {
-    key: string,
+    id: string,
     ingredient: IngredientInterface,
     handleRemove: (ing: IngredientInterface) => void,
     actualPage: Pages
 }
 
 // componente che prende il nome di un ingrediente e lo stampa a schermo 
-const SelectedIngredient = ({ key, ingredient, handleRemove, actualPage }: SelectedIngredientProps) => {
+const SelectedIngredient = ({ id, ingredient, handleRemove, actualPage }: SelectedIngredientProps) => {
     return (
         <span
-          id={key}
+          id={id}
           className={`inline-flex items-center gap-1.5 px-3 py-1.5 ${ actualPage.page == 'homepage' ? "text-wrap" : "text-nowrap"} rounded-full bg-green-100 text-green-700 text-sm font-medium shadow-sm hover:bg-green-200 transition-colors`}
         >
           {ingredient.name}

@@ -1,4 +1,4 @@
-import type { IngredientInterface } from "../../../types/ingredients"
+import type { IngredientInterface } from "../../../../types/ingredients"
 
 type DisplayedIngredientsProps = {
     displayedIngredients: IngredientInterface[]

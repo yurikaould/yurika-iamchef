@@ -18,7 +18,7 @@ export const RecipeCard = ({ recipe, onClickDetails }: RecipeCardProps) => {
   return (
     <div className="w-full h-full bg-linear-to-br from-green-50 to-green-100 rounded-2xl shadow-lg p-3 flex flex-col gap-2 overflow-hidden min-h-0">
       <img
-        src={data.image || "https://via.placeholder.com/400x140?text=No+Image"}
+        src={"https://images.unsplash.com/photo-1547385203-cfe7977b9fd0?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1171"} //! RIMETTERE data.image PER AVERE IMMAGINE DELLA RICETTA
         alt={data.title || "Titolo non disponibile"}
         className="w-full h-32 object-cover rounded-xl shrink-0"
       />

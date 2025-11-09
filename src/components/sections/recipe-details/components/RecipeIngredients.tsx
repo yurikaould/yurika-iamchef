@@ -1,4 +1,4 @@
-import type { IngredientInterface } from "../../../types/ingredients";
+import type { IngredientInterface } from "../../../../types/ingredients";
 import { IconBadge } from "./IconBadge";
 
 type RecipeIngredientsProps = {
