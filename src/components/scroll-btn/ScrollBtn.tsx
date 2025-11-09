@@ -6,10 +6,19 @@ type ScrollBtnProps = {
   currentIndex: number,
   onClick: (newIndex: number) => void;
   maxIndex: number,
-  isIncrement: boolean
+  isIncrement: boolean,
+  cursor: string,
+  opacity: string
 };
 
-const ScrollBtn: React.FC<ScrollBtnProps> = ({ currentIndex, onClick, maxIndex, isIncrement }: ScrollBtnProps) => {
+const ScrollBtn: React.FC<ScrollBtnProps> = ({ 
+  currentIndex, 
+  onClick, 
+  maxIndex, 
+  isIncrement ,
+  cursor,
+  opacity
+}: ScrollBtnProps) => {
 
   //# definisco incrementare o decrementare l'indice
   const params = isIncrement 
@@ -22,7 +31,7 @@ const ScrollBtn: React.FC<ScrollBtnProps> = ({ currentIndex, onClick, maxIndex, 
 
   return (
     <button
-      className="cursor-pointer"
+      className={`${opacity} ${cursor}`}
       onClick={() => onClick(params)}
     >
 

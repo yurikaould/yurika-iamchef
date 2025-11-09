@@ -2,7 +2,8 @@ import { useState } from 'react'
 import Header from '../header/Header'
 import type { Pages } from '../../types/pages'
 import type { IngredientInterface } from '../../types/ingredients'
-import DiscoverRecipes from '../sections/DiscoverRecipes'
+import DiscoverRecipes from '../sections/discover-recipes/DiscoverRecipes'
+import { RecipeDetails } from '../sections/recipe-details/RecipeDetails'
 
 const Layout = () => {
 
@@ -30,20 +31,33 @@ const Layout = () => {
     }
 
     return (
-        <main className='w-screen max-w-96 h-screen flex flex-col mx-auto bg-green-700 p-6 pt-14'>
-            <header className="mb-6">
-                <Header 
-                  actualPage={actualPage} 
-                  setActualPage={setActualPage} 
-                  selectedIng={selectedIng} 
-                  onSuggestClick={handleSuggestClick} 
-                  onBadgeRemove={handleSuggestRemove} 
-                />
-            </header>
+        <main className={`w-screen max-w-96 h-screen flex flex-col mx-auto bg-green-700 ${ actualPage.page != 'recipe-details' ? "p-6 pt-14" : "p-0"} overflow-hidden`}>
+              {
+                
+                actualPage.page != 'recipe-details' &&
+                
+                <header className="mb-6 shrink-0">
+                  
+                  <Header 
+                    actualPage={actualPage} 
+                    setActualPage={setActualPage} 
+                    selectedIng={selectedIng} 
+                    onSuggestClick={handleSuggestClick} 
+                    onBadgeRemove={handleSuggestRemove} 
+                  />
 
-            <section className='w-full h-full max-h-full mb-6 flex justify-center'>
+                </header>
 
+              }
+            
+
+            <section className={`w-full flex-1 flex justify-center min-h-0 ${ actualPage.page != 'recipe-details' ? "mb-6" : ""} overflow-hidden`}>
+
+              {/* condizione per mostrare la pagina con le varie card */}
               {actualPage.page == 'discover-recipes' && <DiscoverRecipes setActualPage={setActualPage} />}
+
+              {/* condizione per mostrare la pagina con i dettagli della card */}
+              {actualPage.page == 'recipe-details' && <RecipeDetails recipeData={actualPage.recipeData} setActualPage={setActualPage} />}
 
             </section>
 

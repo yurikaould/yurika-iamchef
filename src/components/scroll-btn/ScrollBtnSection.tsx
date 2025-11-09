@@ -11,16 +11,21 @@ type ScrollBtnSectionProps = {
 export function ScrollBtnSection({ currentIndex, setCurrentIndex, maxIndex, setActualPage }: ScrollBtnSectionProps) {
 
   return (
-    <div className="mt-4 flex gap-4 justify-center border border-red-500">
+    <div className="py-2 flex gap-3 justify-center items-center">
 
-        <ScrollBtn 
-          currentIndex={currentIndex}
-          isIncrement={false}
-          maxIndex={maxIndex}
-          onClick={setCurrentIndex}
-        />
+          <ScrollBtn 
+            currentIndex={currentIndex}
+            isIncrement={false}
+            maxIndex={maxIndex}
+            onClick={setCurrentIndex}
+            cursor={currentIndex == 0 ? "cursor-default" : "cursor-pointer"}
+            opacity={currentIndex == 0 ? "opacity-50" : "opacity-100"}
+          />
 
-        <div className="flex w-14 h-14">
+        <div 
+          className="flex w-12 h-12 cursor-pointer shrink-0"
+          onClick={() => setActualPage({page: "homepage"})}
+        >
 
           <img src="/icons/iAmChef_Logo.svg" alt="Logo" className="w-full h-full rounded-lg"/>
 
@@ -31,14 +36,16 @@ export function ScrollBtnSection({ currentIndex, setCurrentIndex, maxIndex, setA
           onClick={() => setActualPage({page: "recipe-details"})}>
           <img className="w-14 h-14" src="/icons/selectRecipeIcon.svg" />
         </button> */}
-
+        
         <ScrollBtn 
           currentIndex={currentIndex}
           isIncrement={true}
           maxIndex={maxIndex}
           onClick={setCurrentIndex}
+          cursor={currentIndex == maxIndex ? "cursor-default" : "cursor-pointer"}
+          opacity={currentIndex == maxIndex ? "opacity-50" : "opacity-100"}
         />
-
+        
     </div>
   )
 }
