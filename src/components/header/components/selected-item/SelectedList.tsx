@@ -1,5 +1,5 @@
-import type { currentPage } from "../../types/actual-page"
-import type { IngredientInterface } from "../../types/ingredients"
+import type { currentPage } from "../../../../types/actual-page"
+import type { IngredientInterface } from "../../../../types/ingredients"
 import SelectedItem from "./SelectedItem"
 
 type SelectedListProps = {

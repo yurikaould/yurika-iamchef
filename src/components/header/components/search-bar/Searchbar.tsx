@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
-import { ingredients, type IngredientInterface } from "../../types/ingredients";
+import { ingredients, type IngredientInterface } from "../../../../types/ingredients";
 import SuggestList from "../suggest-item/SuggestList";
 
 // Definisco i tipi delle props che mi arrivano da fuori

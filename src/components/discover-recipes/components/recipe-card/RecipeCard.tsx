@@ -1,7 +1,7 @@
-import type { IngredientInterface } from "../../types/ingredients";
-import { fallbackRecipe } from "../../types/fallback-recipe";
-import type { RecipeInterface } from "../../types/recipes";
-import type { currentPage } from "../../types/actual-page";
+import type { IngredientInterface } from "../../../../types/ingredients";
+import { fallbackRecipe } from "../../../../types/fallback-recipe";
+import type { RecipeInterface } from "../../../../types/recipes";
+import type { currentPage } from "../../../../types/actual-page";
 
 type RecipeCardProps = {
   recipe: RecipeInterface;

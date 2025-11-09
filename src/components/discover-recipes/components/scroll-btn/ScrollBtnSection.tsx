@@ -1,5 +1,5 @@
+import type { currentPage } from "../../../../types/actual-page"
 import ScrollBtn from "./ScrollBtn"
-import type { currentPage } from "../../types/actual-page"
 
 type ScrollBtnSectionProps = {
   currentIndex: number

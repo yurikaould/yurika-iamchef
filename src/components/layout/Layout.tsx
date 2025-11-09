@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import Header from '../header/Header'
 import type { IngredientInterface } from '../../types/ingredients'
-import DiscoverRecipes from '../sections/discover-recipes/DiscoverRecipes'
-import { RecipeDetails } from '../sections/recipe-details/RecipeDetails'
+import { RecipeDetails } from '../recipe-details/RecipeDetails'
 import type { currentPage } from '../../types/actual-page'
+import DiscoverRecipes from '../discover-recipes/DiscoverRecipes'
 
 const Layout = () => {
 

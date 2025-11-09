@@ -1,10 +1,9 @@
 import type { currentPage } from "../../types/actual-page"
 import type { IngredientInterface } from "../../types/ingredients"
-import type { Pages } from "../../types/pages"
-import DiscoverRecipeBtn from "../discover-recipes/DiscoverRecipeBtn"
-import SearchBar from "../search-bar/Searchbar"
-import SelectedList from "../selected-item/SelectedList"
-import Titlesubtitle from "../title-subtitle/TitleSubtitle"
+import DiscoverRecipeBtn from "./components/discover-recipes-btn/DiscoverRecipeBtn"
+import SearchBar from "./components/search-bar/Searchbar"
+import SelectedList from "./components/selected-item/SelectedList"
+import Titlesubtitle from "./components/title-subtitle/TitleSubtitle"
  
 
 type HeaderProps = {

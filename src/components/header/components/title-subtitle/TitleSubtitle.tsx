@@ -1,4 +1,4 @@
-import type { currentPage } from "../../types/actual-page";
+import type { currentPage } from "../../../../types/actual-page";
 
 type TitleSubtitleProps = {
   currentPage: currentPage

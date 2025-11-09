@@ -1,6 +1,6 @@
 import { X } from "lucide-react";
-import type { IngredientInterface } from "../../types/ingredients";
-import type { currentPage } from "../../types/actual-page";
+import type { IngredientInterface } from "../../../../types/ingredients";
+import type { currentPage } from "../../../../types/actual-page";
 
 type SelectedIngredientProps = {
     id: string,

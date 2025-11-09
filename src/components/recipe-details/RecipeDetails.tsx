@@ -1,16 +1,16 @@
-import type { RecipeInterface } from "../../../types/recipes";
-import { fallbackRecipe } from "../../../types/fallback-recipe";
-import { getDifficulty } from "../../../utils/recipe-details-utils/getDifficulty";
-import { IconBadge } from "./components/IconBadge.tsx";
-import { getCost } from "../../../utils/recipe-details-utils/getCost";
-import { RecipeCuisines } from "./components/RecipeCuisines.tsx";
-import { getHealtScore } from "../../../utils/recipe-details-utils/getHealtScore";
-import { getSummary } from "../../../utils/recipe-details-utils/getSummary";
-import DisplayedIngredients from "./components/DisplayedIngredients.tsx";
-import WinePairingComponent from "./components/WinePairing.tsx";
-import RecipeImage from "./components/RecipeImage.tsx";
-import { RecipeIngredients } from "./components/RecipeIngredients.tsx";
-import type { currentPage } from "../../../types/actual-page.ts";
+import type { RecipeInterface } from "../../types/recipes.ts";
+import { fallbackRecipe } from "../../types/fallback-recipe.ts";
+import { getDifficulty } from "../../utils/recipe-details-utils/getDifficulty.ts";
+import { IconBadge } from "../card-components/IconBadge.tsx";
+import { getCost } from "../../utils/recipe-details-utils/getCost.tsx";
+import { RecipeCuisines } from "../card-components/RecipeCuisines.tsx";
+import { getHealtScore } from "../../utils/recipe-details-utils/getHealtScore.ts";
+import { getSummary } from "../../utils/recipe-details-utils/getSummary.ts";
+import DisplayedIngredients from "../card-components/DisplayedIngredients.tsx";
+import WinePairingComponent from "../card-components/WinePairing.tsx";
+import RecipeImage from "../card-components/RecipeImage.tsx";
+import { RecipeIngredients } from "../card-components/RecipeIngredients.tsx";
+import type { currentPage } from "../../types/actual-page.ts";
 
 type RecipeDetailsProps = {
   id?: number;

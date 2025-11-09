@@ -1,8 +1,8 @@
 import { useState } from "react"
-import { RecipeCard } from "../../recipe-card/RecipeCard"
-import { recipes } from "../../../types/recipes"
-import { ScrollBtnSection } from "../../scroll-btn/ScrollBtnSection"
-import type { currentPage } from "../../../types/actual-page"
+import { recipes } from "../../types/recipes"
+import { RecipeCard } from "./components/recipe-card/RecipeCard"
+import type { currentPage } from "../../types/actual-page"
+import { ScrollBtnSection } from "./components/scroll-btn/ScrollBtnSection"
 
 type DiscoverRecipesProps = {
   id?: number,

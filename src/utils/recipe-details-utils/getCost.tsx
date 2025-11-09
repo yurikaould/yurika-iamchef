@@ -1,5 +1,5 @@
 import type { ReactElement } from "react"
-import { IconBadge } from "../../components/sections/recipe-details/components/IconBadge"
+import { IconBadge } from "../../components/card-components/IconBadge"
 
 export const getCost = (pricePerServing: number | undefined): ReactElement | null => {
     if (!pricePerServing || pricePerServing < 3) {
