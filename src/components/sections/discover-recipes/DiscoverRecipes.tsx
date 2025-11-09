@@ -5,13 +5,14 @@ import { ScrollBtnSection } from "../../scroll-btn/ScrollBtnSection"
 import type { currentPage } from "../../../types/actual-page"
 
 type DiscoverRecipesProps = {
+  id?: number,
   setCurrentPage: (currentPage: currentPage) => void
 }
 
-function DiscoverRecipes({ setCurrentPage }: DiscoverRecipesProps) {
+function DiscoverRecipes({ id, setCurrentPage }: DiscoverRecipesProps) {
 
   // definisco una variabile di stato che serve per scorrere di volta in volta un array di ricette
-  const [currentIndex, setCurrentIndex] = useState<number>(0)
+  const [currentIndex, setCurrentIndex] = useState<number>(id || 0)
 
   return (
     <main

@@ -18,7 +18,19 @@ type RecipeDetailsProps = {
   setCurrentPage: (currentPage: currentPage) => void
 };
 
-export const RecipeDetails = ({ recipeData, setCurrentPage }: RecipeDetailsProps) => {
+export const RecipeDetails = ({ id, recipeData, setCurrentPage }: RecipeDetailsProps) => {
+
+  //# funzione per gestire il click del bottone 'Back'
+  const handleClickBack = () => {
+
+    setCurrentPage({
+      currentPage: {page: 'discover-recipes'},
+      id: id
+      
+    })
+
+  }
+
   const recipe = recipeData || fallbackRecipe;
 
   const maxIngredientsToShow = 4;
@@ -83,7 +95,7 @@ export const RecipeDetails = ({ recipeData, setCurrentPage }: RecipeDetailsProps
       <div className="w-full px-4 pb-4 pt-2 shrink-0 bg-linear-to-t from-white to-transparent">
         <button
           type="button"
-          onClick={() => setCurrentPage({currentPage: {page: 'discover-recipes'}})}
+          onClick={handleClickBack}
           className="w-full py-3 text-base font-bold bg-green-600 hover:bg-green-700 active:bg-green-800 transition-colors text-white rounded-2xl shadow-lg cursor-pointer"
           style={{ letterSpacing: "0.05em" }}
         >
