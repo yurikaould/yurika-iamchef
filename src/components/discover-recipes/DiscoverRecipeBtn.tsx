@@ -1,14 +1,14 @@
 import { ArrowRight } from "lucide-react"
-import type { Pages } from "../../types/pages"
 import type { IngredientInterface } from "../../types/ingredients"
 import { useState } from "react"
+import type { currentPage } from "../../types/actual-page"
 
 type DiscoverRecipeBtnProps = {
     ingredients: IngredientInterface[],
-    setActualPage: (page: Pages) => void
+    setCurrentPage: (page: currentPage) => void
 }
 
-const DiscoverRecipeBtn = ({ ingredients, setActualPage }: DiscoverRecipeBtnProps) => {
+const DiscoverRecipeBtn = ({ ingredients, setCurrentPage }: DiscoverRecipeBtnProps) => {
 
   // variabile di stato per cambiare la scritta sul bottone quando viene cliccato
   const [isDiscover, setIsDiscover] = useState<boolean>(false)
@@ -23,7 +23,7 @@ const DiscoverRecipeBtn = ({ ingredients, setActualPage }: DiscoverRecipeBtnProp
 
     console.log(ingredients);
   
-    setActualPage({ page: "discover-recipes" });
+    setCurrentPage({ currentPage: {page: "discover-recipes" }});
 
     setIsDiscover(false)
     

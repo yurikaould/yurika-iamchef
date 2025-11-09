@@ -1,14 +1,14 @@
 import ScrollBtn from "./ScrollBtn"
-import type { Pages } from "../../types/pages"
+import type { currentPage } from "../../types/actual-page"
 
 type ScrollBtnSectionProps = {
   currentIndex: number
   setCurrentIndex: (index: number) => void
   maxIndex: number,
-  setActualPage: (page: Pages) => void
+  setCurrentPage: (currentPage: currentPage) => void
 }
 
-export function ScrollBtnSection({ currentIndex, setCurrentIndex, maxIndex, setActualPage }: ScrollBtnSectionProps) {
+export function ScrollBtnSection({ currentIndex, setCurrentIndex, maxIndex, setCurrentPage }: ScrollBtnSectionProps) {
 
   return (
     <div className="py-2 flex gap-3 justify-center items-center">
@@ -24,7 +24,7 @@ export function ScrollBtnSection({ currentIndex, setCurrentIndex, maxIndex, setA
 
         <div 
           className="flex w-12 h-12 cursor-pointer shrink-0"
-          onClick={() => setActualPage({page: "homepage"})}
+          onClick={() => setCurrentPage({currentPage: {page: "homepage"}})}
         >
 
           <img src="/icons/iAmChef_Logo.svg" alt="Logo" className="w-full h-full rounded-lg"/>
@@ -33,7 +33,7 @@ export function ScrollBtnSection({ currentIndex, setCurrentIndex, maxIndex, setA
 
         {/* <button
           className="cursor-pointer"
-          onClick={() => setActualPage({page: "recipe-details"})}>
+          onClick={() => setCurrentPage({page: "recipe-details"})}>
           <img className="w-14 h-14" src="/icons/selectRecipeIcon.svg" />
         </button> */}
         

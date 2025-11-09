@@ -1,12 +1,12 @@
-import type { Pages } from "../../types/pages";
+import type { currentPage } from "../../types/actual-page";
 
 type TitleSubtitleProps = {
-  actualPage: Pages
+  currentPage: currentPage
 }
 
-export default function Titlesubtitle({ actualPage }: TitleSubtitleProps) {
+export default function Titlesubtitle({ currentPage }: TitleSubtitleProps) {
 
-  if (actualPage.page != 'homepage') {
+  if (currentPage.currentPage.page != 'homepage') {
     return null
   }
 

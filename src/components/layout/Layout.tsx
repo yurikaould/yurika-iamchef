@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import Header from '../header/Header'
-import type { Pages } from '../../types/pages'
 import type { IngredientInterface } from '../../types/ingredients'
 import DiscoverRecipes from '../sections/discover-recipes/DiscoverRecipes'
 import { RecipeDetails } from '../sections/recipe-details/RecipeDetails'
+import type { currentPage } from '../../types/actual-page'
 
 const Layout = () => {
 
     // variabile di stato globale per gestire la pagina in cui sono
-    const [actualPage, setActualPage] = useState<Pages>({page: "homepage"})
+    const [currentPage, setCurrentPage] = useState<currentPage>({currentPage: {page: "homepage"}})
 
     const [selectedIng, setSelectedIng] = useState<IngredientInterface[]>([])
 
@@ -31,16 +31,16 @@ const Layout = () => {
     }
 
     return (
-        <main className={`w-screen max-w-96 h-screen flex flex-col mx-auto bg-green-700 ${ actualPage.page != 'recipe-details' ? "p-6 pt-14" : "p-0"} overflow-hidden`}>
+        <main className={`w-screen max-w-96 h-screen flex flex-col mx-auto bg-green-700 ${ currentPage.currentPage.page != 'recipe-details' ? "p-6 pt-14" : "p-0"} overflow-hidden`}>
               {
                 
-                actualPage.page != 'recipe-details' &&
+                currentPage.currentPage.page != 'recipe-details' &&
                 
                 <header className="mb-6 shrink-0">
                   
                   <Header 
-                    actualPage={actualPage} 
-                    setActualPage={setActualPage} 
+                    currentPage={currentPage} 
+                    setCurrentPage={setCurrentPage} 
                     selectedIng={selectedIng} 
                     onSuggestClick={handleSuggestClick} 
                     onBadgeRemove={handleSuggestRemove} 
@@ -51,13 +51,13 @@ const Layout = () => {
               }
             
 
-            <section className={`w-full flex-1 flex justify-center min-h-0 ${ actualPage.page != 'recipe-details' ? "mb-6" : ""} overflow-hidden`}>
+            <section className={`w-full flex-1 flex justify-center min-h-0 ${ currentPage.currentPage.page != 'recipe-details' ? "mb-6" : ""} overflow-hidden`}>
 
               {/* condizione per mostrare la pagina con le varie card */}
-              {actualPage.page == 'discover-recipes' && <DiscoverRecipes setActualPage={setActualPage} />}
+              {currentPage.currentPage.page == 'discover-recipes' && <DiscoverRecipes setCurrentPage={setCurrentPage} />}
 
               {/* condizione per mostrare la pagina con i dettagli della card */}
-              {actualPage.page == 'recipe-details' && <RecipeDetails recipeData={actualPage.recipeData} setActualPage={setActualPage} />}
+              {currentPage.currentPage.page == 'recipe-details' && <RecipeDetails recipeData={currentPage.currentPage.recipeData} setCurrentPage={setCurrentPage} />}
 
             </section>
 

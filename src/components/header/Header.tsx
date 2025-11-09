@@ -1,3 +1,4 @@
+import type { currentPage } from "../../types/actual-page"
 import type { IngredientInterface } from "../../types/ingredients"
 import type { Pages } from "../../types/pages"
 import DiscoverRecipeBtn from "../discover-recipes/DiscoverRecipeBtn"
@@ -7,16 +8,16 @@ import Titlesubtitle from "../title-subtitle/TitleSubtitle"
  
 
 type HeaderProps = {
-    actualPage: Pages,
-    setActualPage: (page: Pages) => void,
+    currentPage: currentPage,
+    setCurrentPage: (currentPage: currentPage) => void,
     selectedIng: IngredientInterface[],
     onSuggestClick: (ing: IngredientInterface) => void,
     onBadgeRemove: (ing: IngredientInterface) => void
 }
 
 const Header = ({
-    actualPage, 
-    setActualPage, 
+    currentPage, 
+    setCurrentPage, 
     selectedIng, 
     onSuggestClick, 
     onBadgeRemove
@@ -26,7 +27,7 @@ const Header = ({
         <div>
 
             <div className="">
-                <Titlesubtitle actualPage={actualPage}/>
+                <Titlesubtitle currentPage={currentPage}/>
             </div>
 
             <div className="flex flex-col gap-4">
@@ -35,9 +36,9 @@ const Header = ({
                 <SelectedList 
                     ingredients={selectedIng} 
                     handleRemove={onBadgeRemove}
-                    actualPage={actualPage}/>
+                    currentPage={currentPage}/>
 
-                <DiscoverRecipeBtn ingredients={selectedIng} setActualPage={setActualPage} />
+                <DiscoverRecipeBtn ingredients={selectedIng} setCurrentPage={setCurrentPage} />
             </div>
 
         </div>

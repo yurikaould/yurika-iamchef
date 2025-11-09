@@ -1,11 +1,11 @@
 import type { IngredientInterface } from "../../types/ingredients";
 import { fallbackRecipe } from "../../types/fallback-recipe";
 import type { RecipeInterface } from "../../types/recipes";
-import type { Pages } from "../../types/pages";
+import type { currentPage } from "../../types/actual-page";
 
 type RecipeCardProps = {
   recipe: RecipeInterface;
-  onClickDetails: (page: Pages) => void;
+  onClickDetails: (currentPage: currentPage) => void;
 };
 
 export const RecipeCard = ({ recipe, onClickDetails }: RecipeCardProps) => {
@@ -43,7 +43,7 @@ export const RecipeCard = ({ recipe, onClickDetails }: RecipeCardProps) => {
         <h3 className="text-green-600 text-sm font-semibold mb-1 shrink-0">Ingredienti:</h3>
         <ul className="list-disc pl-4 text-green-900 text-xs space-y-0.5">
           {data.extendedIngredients && data.extendedIngredients.length > 0 ? (
-            data.extendedIngredients.slice(0, 3).map((ing: IngredientInterface, i: number) => (
+            data.extendedIngredients.slice(0, 3).map((ing: IngredientInterface) => (
               <li key={ing.id} className="overflow-hidden text-ellipsis">
                 {data.extendedIngredients.length > 2
                   ? trimIngredient(ing.name || "Ingrediente", 18)
@@ -62,7 +62,7 @@ export const RecipeCard = ({ recipe, onClickDetails }: RecipeCardProps) => {
       </div>
       
       <button
-        onClick={() => onClickDetails({page: "recipe-details", recipeData: data})}
+        onClick={() => onClickDetails({currentPage: {page: "recipe-details", recipeData: data}})}
         className="w-full bg-green-700 text-white rounded-xl py-2 text-sm font-bold transition duration-150 ease-in hover:bg-green-800 shrink-0 cursor-pointer"
       >
         Dettagli ricetta

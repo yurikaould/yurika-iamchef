@@ -2,13 +2,13 @@ import { useState } from "react"
 import { RecipeCard } from "../../recipe-card/RecipeCard"
 import { recipes } from "../../../types/recipes"
 import { ScrollBtnSection } from "../../scroll-btn/ScrollBtnSection"
-import type { Pages } from "../../../types/pages"
+import type { currentPage } from "../../../types/actual-page"
 
 type DiscoverRecipesProps = {
-  setActualPage: (page: Pages) => void
+  setCurrentPage: (currentPage: currentPage) => void
 }
 
-function DiscoverRecipes({ setActualPage }: DiscoverRecipesProps) {
+function DiscoverRecipes({ setCurrentPage }: DiscoverRecipesProps) {
 
   // definisco una variabile di stato che serve per scorrere di volta in volta un array di ricette
   const [currentIndex, setCurrentIndex] = useState<number>(0)
@@ -20,7 +20,7 @@ function DiscoverRecipes({ setActualPage }: DiscoverRecipesProps) {
     >
 
       <div className="flex-1 min-h-0 overflow-hidden">
-        <RecipeCard recipe={recipes[currentIndex]} onClickDetails={setActualPage} />
+        <RecipeCard recipe={recipes[currentIndex]} onClickDetails={setCurrentPage} />
       </div>
 
       <div className="shrink-0">
@@ -28,7 +28,7 @@ function DiscoverRecipes({ setActualPage }: DiscoverRecipesProps) {
           currentIndex={currentIndex} 
           maxIndex={recipes.length-1} 
           setCurrentIndex={setCurrentIndex} 
-          setActualPage={setActualPage}
+          setCurrentPage={setCurrentPage}
         />
       </div>
 

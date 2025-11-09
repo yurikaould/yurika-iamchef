@@ -1,6 +1,5 @@
 import type { RecipeInterface } from "../../../types/recipes";
 import { fallbackRecipe } from "../../../types/fallback-recipe";
-import type { Pages } from "../../../types/pages";
 import { getDifficulty } from "../../../utils/recipe-details-utils/getDifficulty";
 import { IconBadge } from "./components/IconBadge.tsx";
 import { getCost } from "../../../utils/recipe-details-utils/getCost";
@@ -11,14 +10,15 @@ import DisplayedIngredients from "./components/DisplayedIngredients.tsx";
 import WinePairingComponent from "./components/WinePairing.tsx";
 import RecipeImage from "./components/RecipeImage.tsx";
 import { RecipeIngredients } from "./components/RecipeIngredients.tsx";
+import type { currentPage } from "../../../types/actual-page.ts";
 
 type RecipeDetailsProps = {
   id?: number;
   recipeData?: RecipeInterface;
-  setActualPage: (page: Pages) => void
+  setCurrentPage: (currentPage: currentPage) => void
 };
 
-export const RecipeDetails = ({ recipeData, setActualPage }: RecipeDetailsProps) => {
+export const RecipeDetails = ({ recipeData, setCurrentPage }: RecipeDetailsProps) => {
   const recipe = recipeData || fallbackRecipe;
 
   const maxIngredientsToShow = 4;
@@ -83,7 +83,7 @@ export const RecipeDetails = ({ recipeData, setActualPage }: RecipeDetailsProps)
       <div className="w-full px-4 pb-4 pt-2 shrink-0 bg-linear-to-t from-white to-transparent">
         <button
           type="button"
-          onClick={() => setActualPage({page: 'discover-recipes'})}
+          onClick={() => setCurrentPage({currentPage: {page: 'discover-recipes'}})}
           className="w-full py-3 text-base font-bold bg-green-600 hover:bg-green-700 active:bg-green-800 transition-colors text-white rounded-2xl shadow-lg cursor-pointer"
           style={{ letterSpacing: "0.05em" }}
         >

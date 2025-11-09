@@ -1,6 +1,6 @@
 import type { Pages } from "./pages"
 
-export type ActualPage = {
-    actualPage: Pages,
+export type currentPage = {
+    currentPage: Pages,
     id?: number
 }
