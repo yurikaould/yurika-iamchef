@@ -1,7 +1,12 @@
-import type { IngredientInterface } from "../../../../types/ingredients";
+import type { currentPage } from "../../../../types/actual-page";
 import { fallbackRecipe } from "../../../../types/fallback-recipe";
 import type { RecipeInterface } from "../../../../types/recipes";
-import type { currentPage } from "../../../../types/actual-page";
+import { getDifficulty } from "../../../../utils/recipe-details-utils/getDifficulty";
+import RecipeDishTypes from "../../../card-components/RecipeDishTypes";
+import RecipeImage from "../../../card-components/RecipeImage";
+import { RecipeIngredients } from "../../../card-components/RecipeIngredients";
+import RecipeServings from "../../../card-components/RecipeServings";
+import RecipeTime from "../../../card-components/RecipeTime";
 
 type RecipeCardProps = {
   recipe: RecipeInterface;
@@ -11,59 +16,33 @@ type RecipeCardProps = {
 export const RecipeCard = ({ recipe, onClickDetails }: RecipeCardProps) => {
   const data = recipe || fallbackRecipe;
 
-  // Funzione per tagliare il testo ingrediente
-  const trimIngredient = (name: string, max: number) =>
-    name.length > max ? name.slice(0, max) + "…" : name;
-
   return (
-    <div className="w-full h-full bg-linear-to-br from-green-50 to-green-100 rounded-2xl shadow-lg p-3 flex flex-col gap-2 overflow-hidden min-h-0">
-      <img
-        src={"https://images.unsplash.com/photo-1547385203-cfe7977b9fd0?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1171"} //! RIMETTERE data.image PER AVERE IMMAGINE DELLA RICETTA
-        alt={data.title || "Titolo non disponibile"}
-        className="w-full h-32 object-cover rounded-xl shrink-0"
-      />
-      <h2 className="text-green-700 text-lg font-bold tracking-tight line-clamp-2 shrink-0">
+    <div className="w-full h-full bg-linear-to-br from-green-50 to-green-100 rounded-3xl shadow-xl p-4 flex flex-col gap-6 overflow-hidden min-h-0">
+
+      <RecipeImage image={data.image} title={data.title} />
+
+      <h2 className="text-green-800 text-xl font-extrabold tracking-tight underline decoration-green-200 mb-1">
         {data.title || "Ricetta sconosciuta"}
       </h2>
-      <div className="flex flex-wrap gap-1.5 shrink-0">
-        <span className="bg-green-200 text-green-800 rounded-full px-2 py-0.5 text-xs font-semibold">
-          {data.readyInMinutes ? `${data.readyInMinutes} min` : "Tempo n/d"}
-        </span>
-        <span className="bg-green-200 text-green-800 rounded-full px-2 py-0.5 text-xs font-semibold">
-          {data.servings ? `${data.servings} porzioni` : "Porzioni n/d"}
-        </span>
-        <span className="bg-green-100 text-green-700 rounded-full px-2 py-0.5 text-wrap text-center text-xs font-medium">
-          {data.dishTypes && data.dishTypes.length > 0 ? data.dishTypes[0] : "Pasto"}
-        </span>
-        <span className="bg-green-100 text-green-700 rounded-full px-2 py-0.5 text-xs font-medium">
-          Facile
+
+      <div className="flex flex-wrap items-center gap-2 text-xs">
+        <RecipeTime readyInMinutes={data.readyInMinutes} />
+        <span className="text-gray-400">·</span>
+        <RecipeServings servings={data.servings} />
+        <span className="text-gray-400">·</span>
+        <RecipeDishTypes dishTypes={data.dishTypes} />
+        <span className="text-gray-400">·</span>
+        <span className="flex items-center gap-1 bg-green-200 text-green-800 rounded-full px-2 py-0.5 font-bold">
+          <span role="img" aria-label="difficoltà">⭐</span>
+          {getDifficulty(data.readyInMinutes)}
         </span>
       </div>
-      <div className="flex-1 min-h-0 flex flex-col">
-        <h3 className="text-green-600 text-sm font-semibold mb-1 shrink-0">Ingredienti:</h3>
-        <ul className="list-disc pl-4 text-green-900 text-xs space-y-0.5">
-          {data.extendedIngredients && data.extendedIngredients.length > 0 ? (
-            data.extendedIngredients.slice(0, 3).map((ing: IngredientInterface) => (
-              <li key={ing.id} className="overflow-hidden text-ellipsis">
-                {data.extendedIngredients.length > 2
-                  ? trimIngredient(ing.name || "Ingrediente", 18)
-                  : (ing.name || "Ingrediente")
-                }
-                <span className="text-green-700 font-semibold ml-1">
-                  {ing.measures?.metric?.amount ?? "-"}
-                  {ing.measures?.metric?.unitShort ?? ""}
-                </span>
-              </li>
-            ))
-          ) : (
-            <li>Ingredienti non disponibili</li>
-          )}
-        </ul>
-      </div>
-      
+
+      <RecipeIngredients extendedIngredients={data.extendedIngredients} />
+
       <button
-        onClick={() => onClickDetails({currentPage: {page: "recipe-details", recipeData: data}})}
-        className="w-full bg-green-700 text-white rounded-xl py-2 text-sm font-bold transition duration-150 ease-in hover:bg-green-800 shrink-0 cursor-pointer"
+        onClick={() => onClickDetails({ currentPage: { page: "recipe-details", recipeData: data } })}
+        className="mt-auto w-full bg-green-700 text-white rounded-xl py-3 text-base font-extrabold shadow-md transition hover:bg-green-800 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-600 cursor-pointer"
       >
         Dettagli ricetta
       </button>
