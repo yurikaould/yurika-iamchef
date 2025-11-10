@@ -1,4 +1,4 @@
-import type { currentPage } from "../../../../types/actual-page";
+import type { currentPage } from "../../../../types/current-page";
 import { fallbackRecipe } from "../../../../types/fallback-recipe";
 import type { RecipeInterface } from "../../../../types/recipes";
 import { getDifficulty } from "../../../../utils/recipe-details-utils/getDifficulty";

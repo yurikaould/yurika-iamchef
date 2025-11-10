@@ -1,4 +1,4 @@
-import type { currentPage } from "../../types/actual-page"
+import type { currentPage } from "../../types/current-page"
 import type { IngredientInterface } from "../../types/ingredients"
 import DiscoverRecipeBtn from "./components/discover-recipes-btn/DiscoverRecipeBtn"
 import SearchBar from "./components/search-bar/Searchbar"

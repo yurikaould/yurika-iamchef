@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Header from '../header/Header'
 import type { IngredientInterface } from '../../types/ingredients'
 import { RecipeDetails } from '../recipe-details/RecipeDetails'
-import type { currentPage } from '../../types/actual-page'
+import type { currentPage } from '../../types/current-page'
 import DiscoverRecipes from '../discover-recipes/DiscoverRecipes'
 
 const Layout = () => {

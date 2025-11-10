@@ -10,7 +10,7 @@ import DisplayedIngredients from "../card-components/DisplayedIngredients.tsx";
 import WinePairingComponent from "../card-components/WinePairing.tsx";
 import RecipeImage from "../card-components/RecipeImage.tsx";
 import { RecipeIngredients } from "../card-components/RecipeIngredients.tsx";
-import type { currentPage } from "../../types/actual-page.ts";
+import type { currentPage } from "../../types/current-page.ts";
 
 type RecipeDetailsProps = {
   id?: number;
