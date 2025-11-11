@@ -1,14 +1,16 @@
 import { useState } from 'react'
 import Header from '../header/Header'
 import type { IngredientInterface } from '../../types/ingredients'
-import { RecipeDetails } from '../recipe-details/RecipeDetails'
 import type { currentPage } from '../../types/current-page'
-import DiscoverRecipes from '../discover-recipes/DiscoverRecipes'
+import type { Dispatch, SetStateAction, ReactNode } from 'react'
 
-const Layout = () => {
+type LayoutProps = {
+  currentPage: currentPage
+  setCurrentPage: Dispatch<SetStateAction<currentPage>>
+  children?: ReactNode
+}
 
-    // variabile di stato globale per gestire la pagina in cui sono
-    const [currentPage, setCurrentPage] = useState<currentPage>({currentPage: {page: "homepage"}})
+const Layout = ({ currentPage, setCurrentPage, children }: LayoutProps) => {
 
     const [selectedIng, setSelectedIng] = useState<IngredientInterface[]>([])
 
@@ -32,32 +34,24 @@ const Layout = () => {
 
     return (
         <main className={`w-screen max-w-96 h-screen flex flex-col mx-auto bg-green-700 ${ currentPage.currentPage.page != 'recipe-details' ? "p-6 pt-14" : "p-0"} overflow-hidden`}>
-              {
-                
-                currentPage.currentPage.page != 'recipe-details' &&
-                
-                <header className="mb-6 shrink-0">
-                  
-                  <Header 
-                    currentPage={currentPage} 
-                    setCurrentPage={setCurrentPage} 
-                    selectedIng={selectedIng} 
-                    onSuggestClick={handleSuggestClick} 
-                    onBadgeRemove={handleSuggestRemove} 
-                  />
-
-                </header>
-
-              }
+                {
+                  currentPage.currentPage.page != 'recipe-details' && (
+                    <header className="mb-6 shrink-0">
+                      <Header 
+                        currentPage={currentPage} 
+                        setCurrentPage={setCurrentPage} 
+                        selectedIng={selectedIng} 
+                        onSuggestClick={handleSuggestClick} 
+                        onBadgeRemove={handleSuggestRemove} 
+                      />
+                    </header>
+                  )
+                }
             
 
             <section className={`w-full flex-1 flex justify-center min-h-0 ${ currentPage.currentPage.page != 'recipe-details' ? "mb-6" : ""} overflow-hidden`}>
 
-              {/* condizione per mostrare la pagina con le varie card */}
-              {currentPage.currentPage.page == 'discover-recipes' && <DiscoverRecipes setCurrentPage={setCurrentPage} />}
-
-              {/* condizione per mostrare la pagina con i dettagli della card */}
-              {currentPage.currentPage.page == 'recipe-details' && <RecipeDetails recipeData={currentPage.currentPage.recipeData} setCurrentPage={setCurrentPage} />}
+              {children}
 
             </section>
 
