@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Header from '../header/Header'
+import Navbar from '../header/components/navbar/Navbar'
 import type { IngredientInterface } from '../../types/ingredients'
 import type { currentPage } from '../../types/current-page'
 import type { Dispatch, SetStateAction, ReactNode } from 'react'
@@ -33,7 +34,11 @@ const Layout = ({ currentPage, setCurrentPage, children }: LayoutProps) => {
     }
 
     return (
-        <main className={`w-screen max-w-96 h-screen flex flex-col mx-auto bg-green-700 ${ currentPage.currentPage.page != 'recipe-details' ? "p-6 pt-14" : "p-0"} overflow-hidden`}>
+        <main className={`w-screen max-w-96 h-screen flex flex-col mx-auto bg-white overflow-hidden pt-16`}>
+            {/* Navbar sempre visibile */}
+            <Navbar />
+            
+            <div className={`flex-1 flex flex-col ${currentPage.currentPage.page != 'recipe-details' ? "p-6" : "p-0"} overflow-hidden`}>
                 {
                   currentPage.currentPage.page != 'recipe-details' && (
                     <header className="mb-6 shrink-0">
@@ -49,11 +54,12 @@ const Layout = ({ currentPage, setCurrentPage, children }: LayoutProps) => {
                 }
             
 
-            <section className={`w-full flex-1 flex justify-center min-h-0 ${ currentPage.currentPage.page != 'recipe-details' ? "mb-6" : ""} overflow-hidden`}>
+                <section className={`w-full flex-1 flex justify-center min-h-0 ${ currentPage.currentPage.page != 'recipe-details' ? "mb-6" : ""} overflow-hidden`}>
 
-              {children}
+                  {children}
 
-            </section>
+                </section>
+            </div>
 
             <footer></footer>
         </main>

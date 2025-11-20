@@ -2,10 +2,20 @@ import { useState } from 'react'
 import Layout from "./components/layout/Layout"
 import DiscoverRecipes from './components/discover-recipes/DiscoverRecipes'
 import { RecipeDetails } from './components/recipe-details/RecipeDetails'
+import SplashScreen from './components/SplashScreen'
 import type { currentPage } from './types/current-page'
 
 function App() {
   const [currentPage, setCurrentPage] = useState<currentPage>({ currentPage: { page: 'homepage' } })
+  const [showSplash, setShowSplash] = useState(true)
+
+  const handleSplashEnd = () => {
+    setShowSplash(false)
+  }
+
+  if (showSplash) {
+    return <SplashScreen onSplashEnd={handleSplashEnd} />
+  }
 
   return (
     <Layout currentPage={currentPage} setCurrentPage={setCurrentPage}>
