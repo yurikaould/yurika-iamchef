@@ -23,11 +23,11 @@ export function ScrollBtnSection({ currentIndex, setCurrentIndex, maxIndex, setC
           />
 
         <div 
-          className="flex w-12 h-12 cursor-pointer shrink-0"
+          className="flex w-12 h-12 cursor-pointer shrink-0 items-center justify-center bg-white rounded-lg shadow-md"
           onClick={() => setCurrentPage({currentPage: {page: "homepage"}})}
         >
 
-          <img src="/icons/iAmChef_Logo.svg" alt="Logo" className="w-full h-full rounded-lg"/>
+          <span className="text-2xl">👨‍🍳</span>
 
         </div>
 

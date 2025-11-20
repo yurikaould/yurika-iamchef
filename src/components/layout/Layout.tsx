@@ -34,13 +34,12 @@ const Layout = ({ currentPage, setCurrentPage, children }: LayoutProps) => {
     }
 
     return (
-        <main className={`w-screen max-w-96 h-screen flex flex-col mx-auto bg-white overflow-hidden pt-16`}>
+        <main className={`${currentPage.currentPage.page === 'homepage' ? 'w-screen' : 'w-screen max-w-96'} h-screen flex flex-col mx-auto bg-white overflow-hidden pt-16`}>
             {/* Navbar sempre visibile */}
             <Navbar />
             
-            <div className={`flex-1 flex flex-col ${currentPage.currentPage.page != 'recipe-details' ? "p-6" : "p-0"} overflow-hidden`}>
-                {
-                  currentPage.currentPage.page != 'recipe-details' && (
+            <div className={`flex-1 flex flex-col ${currentPage.currentPage.page != 'recipe-details' && currentPage.currentPage.page !== 'homepage' ? "p-6" : "p-0"} overflow-hidden`}>
+                {currentPage.currentPage.page === 'feed' && (
                     <header className="mb-6 shrink-0">
                       <Header 
                         currentPage={currentPage} 
@@ -50,11 +49,10 @@ const Layout = ({ currentPage, setCurrentPage, children }: LayoutProps) => {
                         onBadgeRemove={handleSuggestRemove} 
                       />
                     </header>
-                  )
-                }
+                  )}
             
 
-                <section className={`w-full flex-1 flex justify-center min-h-0 ${ currentPage.currentPage.page != 'recipe-details' ? "mb-6" : ""} overflow-hidden`}>
+                <section className={`w-full flex-1 flex justify-center min-h-0 ${ currentPage.currentPage.page === 'feed' ? "mb-6" : ""} overflow-hidden`}>
 
                   {children}
 
