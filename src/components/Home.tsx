@@ -74,7 +74,8 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage }) => {
             onClick={handleSearchClick}
             disabled={selectedIngredients.length === 0}
           >
-            🔍 Cerca ricette
+            <span className="search-icon-main">🔍</span>
+            <span className="button-text">Cerca ricette</span>
           </button>
         </div>
       </div>

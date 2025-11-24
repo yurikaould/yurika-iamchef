@@ -66,7 +66,7 @@ const SearchBar = ({ handleSuggestClick }: SearchBarProps) => {
             type="text"
             name="search-bar"
             id="search-bar"
-            placeholder="First ingredients ..."
+            placeholder=""
             className="w-full bg-transparent border-none focus:outline-none text-gray-800 placeholder:text-gray-400"
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
