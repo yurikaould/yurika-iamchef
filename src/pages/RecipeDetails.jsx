@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { ArrowLeft, Clock, Users, ChefHat, Heart, ExternalLink, AlertCircle, Star, Utensils, TrendingUp, Info } from 'lucide-react'
+import { mockRecipes } from '../data/mockRecipes'
 import '../recipe-details.css'
 
 const RecipeDetails = () => {
@@ -9,9 +10,33 @@ const RecipeDetails = () => {
   const [recipe, setRecipe] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState('')
+  const [appMode, setAppMode] = useState('api')
 
   useEffect(() => {
     const fetchRecipeDetails = async () => {
+      const mode = localStorage.getItem('APP_MODE')
+      setAppMode(mode || 'api')
+      
+      // Modalità mock: carica da ricette locali
+      if (mode === 'mock') {
+        setIsLoading(true)
+        setError('')
+        
+        // Simula delay per UX
+        setTimeout(() => {
+          const mockRecipe = mockRecipes.find(r => r.id === id)
+          
+          if (mockRecipe) {
+            setRecipe(mockRecipe)
+          } else {
+            setError('Ricetta non trovata nelle ricette demo')
+          }
+          setIsLoading(false)
+        }, 500)
+        return
+      }
+      
+      // Modalità API: usa Spoonacular
       const apiKey = localStorage.getItem('SPOONACULAR_API_KEY')
       if (!apiKey) {
         navigate('/')
@@ -112,6 +137,9 @@ const RecipeDetails = () => {
           <div className="recipe-logo">
             <ChefHat size={28} />
             <span>I AM CHEF</span>
+            {appMode === 'mock' && (
+              <span className="mode-badge mock">DEMO</span>
+            )}
           </div>
         </div>
 

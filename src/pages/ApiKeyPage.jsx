@@ -17,7 +17,8 @@ const ApiKeyPage = () => {
   }, [navigate])
 
   const handleMockup = () => {
-    // Rimuovi eventuale API key esistente per forzare l'uso delle ricette mock
+    // Imposta modalità mock e naviga alla pagina ingredienti
+    localStorage.setItem('APP_MODE', 'mock')
     localStorage.removeItem('SPOONACULAR_API_KEY')
     navigate('/ingredients')
   }
@@ -52,6 +53,7 @@ const ApiKeyPage = () => {
 
       // Se arriva qui, la API key è valida
       localStorage.setItem('SPOONACULAR_API_KEY', apiKey.trim())
+      localStorage.setItem('APP_MODE', 'api')
       navigate('/ingredients')
       
     } catch (err) {

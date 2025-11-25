@@ -51,6 +51,32 @@ body {
   height: 28px;
 }
 
+/* Badge modalità */
+.mode-badge {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-left: 8px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.mode-badge.mock {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
 .logo h1 {
   font-size: 20px;
   font-weight: 700;

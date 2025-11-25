@@ -5,13 +5,21 @@ import { Search, ChefHat, Settings, AlertCircle } from 'lucide-react'
 const IngredientSearch = () => {
   const [searchTerm, setSearchTerm] = useState('')
   const [error, setError] = useState('')
+  const [appMode, setAppMode] = useState('api')
   const navigate = useNavigate()
 
   useEffect(() => {
-    // Verifica se la API key è presente
+    // Verifica modalità (API key o mock)
+    const mode = localStorage.getItem('APP_MODE')
     const apiKey = localStorage.getItem('SPOONACULAR_API_KEY')
-    if (!apiKey) {
+    
+    if (mode === 'mock') {
+      setAppMode('mock')
+    } else if (!apiKey) {
+      // Se non c'è né mode né API key, torna alla home
       navigate('/')
+    } else {
+      setAppMode('api')
     }
   }, [navigate])
 
@@ -30,6 +38,7 @@ const IngredientSearch = () => {
 
   const handleChangeApiKey = () => {
     localStorage.removeItem('SPOONACULAR_API_KEY')
+    localStorage.removeItem('APP_MODE')
     navigate('/')
   }
 
@@ -41,10 +50,13 @@ const IngredientSearch = () => {
           <div className="logo">
             <ChefHat className="logo-icon" />
             <h1>I AM CHEF</h1>
+            {appMode === 'mock' && (
+              <span className="mode-badge mock">MODALITÀ DEMO</span>
+            )}
           </div>
           <button onClick={handleChangeApiKey} className="change-api-btn">
             <Settings size={18} />
-            Cambia API Key
+            {appMode === 'mock' ? 'Torna alla Home' : 'Cambia API Key'}
           </button>
         </div>
 
@@ -110,28 +122,6 @@ const IngredientSearch = () => {
                 {error}
               </div>
             )}
-          </div>
-        </div>
-
-        {/* Call to action */}
-        <div className="cta-section">
-          <div className="cta-content">
-            <h3>Inizia la tua avventura culinaria!</h3>
-            <p>Cerca un ingrediente per iniziare a scoprire ricette fantastiche</p>
-            <div className="features-list">
-              <div className="feature-item">
-                <span className="feature-icon">🔍</span>
-                <span>Cerca ingredienti disponibili</span>
-              </div>
-              <div className="feature-item">
-                <span className="feature-icon">📝</span>
-                <span>Seleziona quelli che hai in casa</span>
-              </div>
-              <div className="feature-item">
-                <span className="feature-icon">🍳</span>
-                <span>Scopri ricette perfette per te</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>

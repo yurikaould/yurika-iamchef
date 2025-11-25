@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useSearchParams, useNavigate } from 'react-router-dom'
 import { Search, ChefHat, ArrowLeft, Plus, X, ArrowRight, AlertCircle } from 'lucide-react'
+import { mockRecipes, filterRecipesByIngredients } from '../data/mockRecipes'
 import '../search-results.css'
 
 const SearchResults = () => {
@@ -16,12 +17,82 @@ const SearchResults = () => {
   const [error, setError] = useState('')
   const [recipesError, setRecipesError] = useState('')
   const [showRecipes, setShowRecipes] = useState(false)
+  const [appMode, setAppMode] = useState('api')
 
   useEffect(() => {
+    // Verifica modalità
+    const mode = localStorage.getItem('APP_MODE')
+    setAppMode(mode || 'api')
+    
     if (query) {
-      searchIngredients(query)
+      if (mode === 'mock') {
+        searchIngredientsMock(query)
+      } else {
+        searchIngredients(query)
+      }
     }
   }, [query])
+
+  const searchIngredientsMock = (searchTerm) => {
+    setIsLoading(true)
+    setError('')
+    
+    // Simula un piccolo delay per UX
+    setTimeout(() => {
+      try {
+        // Lista ingredienti predefiniti basati sulle ricette mock
+        const mockIngredients = [
+          { id: 'spaghetti-1', name: 'spaghetti', displayName: 'Spaghetti', image: 'https://images.unsplash.com/photo-1551892374-ecf8be72a271?w=100&h=100&fit=crop' },
+          { id: 'pasta-1', name: 'pasta', displayName: 'Pasta', image: 'https://images.unsplash.com/photo-1551892374-ecf8be72a271?w=100&h=100&fit=crop' },
+          { id: 'riso-carnaroli-1', name: 'riso carnaroli', displayName: 'Riso Carnaroli', image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=100&h=100&fit=crop' },
+          { id: 'riso-1', name: 'riso', displayName: 'Riso', image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=100&h=100&fit=crop' },
+          { id: 'petto-pollo-1', name: 'petto di pollo', displayName: 'Petto di Pollo', image: 'https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=100&h=100&fit=crop' },
+          { id: 'pollo-1', name: 'pollo', displayName: 'Pollo', image: 'https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=100&h=100&fit=crop' },
+          { id: 'funghi-porcini-1', name: 'funghi porcini', displayName: 'Funghi Porcini', image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=100&h=100&fit=crop' },
+          { id: 'funghi-1', name: 'funghi', displayName: 'Funghi', image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=100&h=100&fit=crop' },
+          { id: 'guanciale-1', name: 'guanciale', displayName: 'Guanciale', image: 'https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=100&h=100&fit=crop' },
+          { id: 'uova-1', name: 'uova', displayName: 'Uova', image: 'https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=100&h=100&fit=crop' },
+          { id: 'pecorino-1', name: 'pecorino romano', displayName: 'Pecorino Romano', image: 'https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=100&h=100&fit=crop' },
+          { id: 'parmigiano-1', name: 'parmigiano reggiano', displayName: 'Parmigiano Reggiano', image: 'https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=100&h=100&fit=crop' },
+          { id: 'basilico-1', name: 'basilico fresco', displayName: 'Basilico Fresco', image: 'https://images.unsplash.com/photo-1618375569909-3c8616cf7733?w=100&h=100&fit=crop' },
+          { id: 'aglio-1', name: 'aglio', displayName: 'Aglio', image: 'https://images.unsplash.com/photo-1553163147-6e4ff747d506?w=100&h=100&fit=crop' },
+          { id: 'cipolla-1', name: 'cipolla', displayName: 'Cipolla', image: 'https://images.unsplash.com/photo-1508313880080-c4bef43d8837?w=100&h=100&fit=crop' },
+          { id: 'pomodori-1', name: 'pomodori pelati', displayName: 'Pomodori Pelati', image: 'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=100&h=100&fit=crop' },
+          { id: 'lattuga-1', name: 'lattuga romana', displayName: 'Lattuga Romana', image: 'https://images.unsplash.com/photo-1622206151226-18ca2c9ab4a1?w=100&h=100&fit=crop' },
+          { id: 'salmone-1', name: 'filetti di salmone', displayName: 'Filetti di Salmone', image: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=100&h=100&fit=crop' },
+          { id: 'zucchine-1', name: 'zucchine', displayName: 'Zucchine', image: 'https://images.unsplash.com/photo-1506426677965-d0b923be1dc5?w=100&h=100&fit=crop' },
+          { id: 'mascarpone-1', name: 'mascarpone', displayName: 'Mascarpone', image: 'https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=100&h=100&fit=crop' },
+          { id: 'caffe-1', name: 'caffè espresso', displayName: 'Caffè Espresso', image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=100&h=100&fit=crop' },
+          { id: 'curry-1', name: 'curry in polvere', displayName: 'Curry in Polvere', image: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=100&h=100&fit=crop' },
+          { id: 'latte-cocco-1', name: 'latte di cocco', displayName: 'Latte di Cocco', image: 'https://images.unsplash.com/photo-1447875569765-2b3db822bec9?w=100&h=100&fit=crop' },
+          { id: 'carne-1', name: 'carne macinata', displayName: 'Carne Macinata', image: 'https://images.unsplash.com/photo-1588347818113-0c6de5b73150?w=100&h=100&fit=crop' }
+        ]
+        
+        // Filtra ingredienti che corrispondono alla ricerca
+        const searchLower = searchTerm.toLowerCase().trim()
+        const matchingIngredients = mockIngredients
+          .filter(ing => 
+            ing.name.toLowerCase().includes(searchLower) ||
+            ing.displayName.toLowerCase().includes(searchLower)
+          )
+          .map(ing => ({
+            id: ing.id,
+            name: ing.displayName,
+            image: ing.image
+          }))
+          .slice(0, 15)
+        
+        console.log(`🔍 Mock search for "${searchTerm}" found ${matchingIngredients.length} ingredients`)
+        setResults(matchingIngredients)
+      } catch (err) {
+        console.error('❌ Errore ricerca mock:', err)
+        setError('Errore durante la ricerca mock')
+        setResults([])
+      } finally {
+        setIsLoading(false)
+      }
+    }, 300)
+  }
 
   const searchIngredients = async (searchTerm) => {
     const apiKey = localStorage.getItem('SPOONACULAR_API_KEY')
@@ -78,6 +149,45 @@ const SearchResults = () => {
     setIsLoadingRecipes(true)
     setRecipesError('')
     
+    // Modalità mock: filtra ricette locali
+    if (appMode === 'mock') {
+      console.log('🎭 Modalità mock: ricerca ricette')
+      setTimeout(() => {
+        try {
+          const ingredientNames = selectedIngredients.map(ing => ing.name)
+          console.log('🥗 Ingredienti selezionati:', ingredientNames)
+          
+          const filteredRecipes = filterRecipesByIngredients(mockRecipes, ingredientNames)
+          console.log('📋 Ricette filtrate:', filteredRecipes.length)
+          
+          // Converte le ricette mock al formato aspettato dal componente
+          const formattedRecipes = filteredRecipes.map(recipe => ({
+            id: recipe.id,
+            title: recipe.title,
+            image: recipe.image,
+            usedIngredientCount: recipe.extendedIngredients.filter(ing =>
+              ingredientNames.some(searchIng => 
+                ing.name.toLowerCase().includes(searchIng.toLowerCase()) ||
+                searchIng.toLowerCase().includes(ing.name.toLowerCase())
+              )
+            ).length,
+            missedIngredientCount: 0
+          }))
+          
+          console.log('✨ Ricette formattate:', formattedRecipes)
+          setRecipes(formattedRecipes)
+          setShowRecipes(true)
+        } catch (err) {
+          console.error('❌ Errore ricette mock:', err)
+          setRecipesError('Errore durante la ricerca delle ricette mock')
+        } finally {
+          setIsLoadingRecipes(false)
+        }
+      }, 500)
+      return
+    }
+    
+    // Modalità API: usa Spoonacular
     const apiKey = localStorage.getItem('SPOONACULAR_API_KEY')
     const ingredientNames = selectedIngredients.map(ing => ing.name).join(',')
     
@@ -133,6 +243,9 @@ const SearchResults = () => {
           <div className="logo-small">
             <ChefHat size={24} />
             <span>I AM CHEF</span>
+            {appMode === 'mock' && (
+              <span className="mode-badge mock">DEMO</span>
+            )}
           </div>
         </div>
 
